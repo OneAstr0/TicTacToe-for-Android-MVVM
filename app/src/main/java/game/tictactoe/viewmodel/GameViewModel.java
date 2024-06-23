@@ -22,12 +22,6 @@ public class GameViewModel extends AndroidViewModel {
         statusMessage = new MutableLiveData<>(game.getStatusMessage());
     }
 
-    public void resetGame() {
-        game.resetGame();
-        board.setValue(game.getBoard());
-        statusMessage.setValue(game.getStatusMessage());
-    }
-
     public LiveData<Cell[][]> getBoard() {
         return board;
     }
@@ -39,7 +33,7 @@ public class GameViewModel extends AndroidViewModel {
     public void onCellClicked(int row, int col) {
         if (game.placeElement(row, col)) {
             board.setValue(game.getBoard());
-            statusMessage.setValue(game.getCurrentPlayer().getName() + " победил!");
+            statusMessage.setValue("Победил " + game.getCurrentPlayer().getName() +"!");
         } else {
             board.setValue(game.getBoard());
             statusMessage.setValue(game.getStatusMessage());

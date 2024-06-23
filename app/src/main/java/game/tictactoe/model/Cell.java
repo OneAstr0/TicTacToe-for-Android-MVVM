@@ -26,7 +26,6 @@ public class Cell {
         this.imageLink = imageLink;
     }
 
-
     public boolean isEmpty() {
         return player == null || imageLink == "nothing";
     }

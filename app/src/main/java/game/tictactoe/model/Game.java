@@ -12,8 +12,8 @@ public class Game {
     private Cell[][] board;
 
     public Game() {
-        player1 = new Player("Player 1");
-        player2 = new Player("Player 2");
+        player1 = new Player("крестик");
+        player2 = new Player("нолик");
         currentPlayer = player1;
         board = new Cell[3][3];
         initializeBoard();
@@ -28,8 +28,8 @@ public class Game {
     }
 
     public void resetGame() {
-        player1 = new Player("Player 1");
-        player2 = new Player("Player 2");
+        player1 = new Player("крестик");
+        player2 = new Player("нолик");
         currentPlayer = player1;
         initializeBoard();
     }
@@ -43,7 +43,7 @@ public class Game {
     }
 
     public String getStatusMessage() {
-        return "Ход " + currentPlayer.getName();
+        return "Ходит " + currentPlayer.getName();
     }
 
     public boolean placeElement(int row, int col) {

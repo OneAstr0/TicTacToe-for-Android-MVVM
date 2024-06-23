@@ -34,7 +34,6 @@ public class Player {
         quantity++;
     }
 
-
     private void removeOldestElement() {
         // find the oldest element (first in the array)
         Cell oldestElement = elements[0];
