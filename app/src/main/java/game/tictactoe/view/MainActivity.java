@@ -1,4 +1,4 @@
-package game.tictactoe.View;
+package game.tictactoe.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,14 +6,11 @@ import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import game.tictactoe.R;
-import game.tictactoe.ViewModel.MainViewModel;
+import game.tictactoe.viewmodel.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
     private MainViewModel mainViewModel;

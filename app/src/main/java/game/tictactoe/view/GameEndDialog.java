@@ -1,4 +1,4 @@
-package game.tictactoe.View;
+package game.tictactoe.view;
 
 public class GameEndDialog {
 }

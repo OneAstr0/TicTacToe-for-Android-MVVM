@@ -1,9 +1,12 @@
-package game.tictactoe.Model;
+package game.tictactoe.model;
 
 public class Player {
 
     private String name;
-    private Integer quantity;
+    private Integer quantity; /* the number of elements installed by the player on the field
+    (when 3 is reached, we begin to remember the path for the earliest placed one,
+    so that when installing a new element, we delete the earliest one,
+    thereby saving exactly 3 elements on the player's field) */
     private Integer[] excess; // coordinates of the cell of the field from where the element will be removed
 
     public Player(String name, Integer quantity, Integer[] excess) {

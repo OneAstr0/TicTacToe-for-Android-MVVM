@@ -1,4 +1,4 @@
-package game.tictactoe.ViewModel;
+package game.tictactoe.viewmodel;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
