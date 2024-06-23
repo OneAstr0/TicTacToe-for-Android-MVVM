@@ -3,39 +3,53 @@ package game.tictactoe.model;
 public class Player {
 
     private String name;
-    private Integer quantity; /* the number of elements installed by the player on the field
-    (when 3 is reached, we begin to remember the path for the earliest placed one,
-    so that when installing a new element, we delete the earliest one,
-    thereby saving exactly 3 elements on the player's field) */
-    private Integer[] excess; // coordinates of the cell of the field from where the element will be removed
+    private int quantity; // the number of elements placed by the player on the board
+    private Cell[] elements; // array of elements placed on the board
 
-    public Player(String name, Integer quantity, Integer[] excess) {
+    public Player(String name) {
         this.name = name;
-        this.quantity = quantity;
-        this.excess = excess;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public void setExcess(Integer[] excess) {
-        this.excess = excess;
+        this.quantity = 0;
+        this.elements = new Cell[3]; // maximum 3 elements per player
     }
 
     public String getName() {
         return name;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public Integer[] getExcess() {
-        return excess;
+    public Cell[] getElements() {
+        return elements;
+    }
+
+    public void addElement(Cell cell) {
+        if (quantity < 3) {
+            // add new element if player has space
+            elements[quantity] = cell;
+            quantity++;
+        } else {
+            // remove the oldest element if max capacity is reached
+            removeOldestElement();
+            elements[quantity - 1] = cell;
+        }
+    }
+
+    private void removeOldestElement() {
+        // find the oldest element (first in the array)
+        Cell oldestElement = elements[0];
+
+        // set its state to "nothing"
+        oldestElement.setImageLink("nothing");
+        oldestElement.setPlayer(null);
+
+        // shift all elements to the left to make space for new element
+        for (int i = 0; i < 2; i++) {
+            elements[i] = elements[i + 1];
+        }
+
+        // decrease the number of elements on the board
+        quantity--;
     }
 }
