@@ -45,4 +45,5 @@ public class GameViewModel extends AndroidViewModel {
             statusMessage.setValue(game.getStatusMessage());
         }
     }
+
 }

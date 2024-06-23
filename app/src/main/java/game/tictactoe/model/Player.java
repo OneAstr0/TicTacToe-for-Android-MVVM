@@ -25,16 +25,15 @@ public class Player {
     }
 
     public void addElement(Cell cell) {
-        if (quantity < 3) {
-            // add new element if player has space
-            elements[quantity] = cell;
-            quantity++;
-        } else {
-            // remove the oldest element if max capacity is reached
+        if (quantity == 3) {
             removeOldestElement();
-            elements[quantity - 1] = cell;
         }
+
+        // add new element if player has space
+        elements[quantity] = cell;
+        quantity++;
     }
+
 
     private void removeOldestElement() {
         // find the oldest element (first in the array)
@@ -49,7 +48,11 @@ public class Player {
             elements[i] = elements[i + 1];
         }
 
+        // clear the reference to the last element
+        elements[quantity - 1] = null;
+
         // decrease the number of elements on the board
         quantity--;
     }
+
 }
