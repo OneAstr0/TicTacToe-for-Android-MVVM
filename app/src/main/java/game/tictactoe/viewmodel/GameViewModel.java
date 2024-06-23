@@ -46,4 +46,15 @@ public class GameViewModel extends AndroidViewModel {
         }
     }
 
+    public boolean isGameOver() {
+        return game.isGameOver();
+    }
+
+    public void restartGame() {
+        game.resetGame();
+        board.setValue(game.getBoard());
+        statusMessage.setValue(game.getStatusMessage());
+    }
+
+
 }

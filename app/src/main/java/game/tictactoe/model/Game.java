@@ -80,4 +80,9 @@ public class Game {
 
         return false;
     }
+
+    public boolean isGameOver() {
+        return checkForWinner(player1) || checkForWinner(player2);
+    }
+
 }

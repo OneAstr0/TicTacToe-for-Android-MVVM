@@ -51,16 +51,54 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void updateBoard(Cell[][] board) {
-        updateCell(binding.cell00, board[0][0]);
-        updateCell(binding.cell01, board[0][1]);
-        updateCell(binding.cell02, board[0][2]);
-        updateCell(binding.cell10, board[1][0]);
-        updateCell(binding.cell11, board[1][1]);
-        updateCell(binding.cell12, board[1][2]);
-        updateCell(binding.cell20, board[2][0]);
-        updateCell(binding.cell21, board[2][1]);
-        updateCell(binding.cell22, board[2][2]);
+
+        int rows = board.length;
+        int cols = board[0].length;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                updateCell(getCellView(i, j), board[i][j]);
+            }
+        }
+
+        boolean gameOver = gameViewModel.isGameOver();
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                getCellView(i, j).setClickable(!gameOver);
+            }
+        }
+
+        binding.restartButton.setVisibility(gameOver ? View.VISIBLE : View.GONE);
     }
+
+    private View getCellView(int row, int col) {
+        switch (row) {
+            case 0:
+                switch (col) {
+                    case 0: return binding.cell00;
+                    case 1: return binding.cell01;
+                    case 2: return binding.cell02;
+                }
+                break;
+            case 1:
+                switch (col) {
+                    case 0: return binding.cell10;
+                    case 1: return binding.cell11;
+                    case 2: return binding.cell12;
+                }
+                break;
+            case 2:
+                switch (col) {
+                    case 0: return binding.cell20;
+                    case 1: return binding.cell21;
+                    case 2: return binding.cell22;
+                }
+                break;
+        }
+        throw new IllegalArgumentException("Invalid cell coordinates: " + row + ", " + col);
+    }
+
 
     private void updateCell(View cell, Cell data) {
         if (data != null) {
@@ -73,4 +111,9 @@ public class GameActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void restartGame(View view) {
+        gameViewModel.restartGame();
+    }
+
 }
